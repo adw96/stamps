@@ -137,7 +137,14 @@ ggplot(abundances, aes(JPA_Jan, JPA_Feb)) +
 #
 ###############################################
 
-# In Option A we calculated the relative abundance of the tax
+# R is a vectorised language, so for a function that takes 1 argument, 
+# you can apply across a vector
+abundances[, 1] + 5
+exp(abundances[, 1])
+
+# what about for more complex functions?
+
+# In Option A we calculated the relative abundance of the taxa
 # using scale()
 # This was a good way to do it, are we going to try to do the
 # same thing with a loop
@@ -265,8 +272,8 @@ my_second_function(3)
 # relative abundance table is pretty easy. But what if you have 
 # to do it for many OTU tables?
 
-# Exercise: Write a function that takes in an OTU table and covariate data
-# and the relative abundance table
+# Exercise: Write a function that takes in an OTU table
+# and returns the relative abundance table
 
 # Note that you can construct functions inline:
 all(apply(abundances, 2, function(x) x/sum(x)) == relative_abundances)

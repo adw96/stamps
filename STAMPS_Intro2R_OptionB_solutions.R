@@ -1,4 +1,4 @@
-# Solution to the exercises of Option B
+# Solution to selective exercises of Option B
 # Note that these are not the only possible solutions! 
 # Developing your own style is strongly encouraged!
 
@@ -10,12 +10,12 @@ names(subset_data_frame)
 ggplot(subset_data_frame, aes(x = January, y = February, col = highabundance)) +
   geom_point()
 
-# use a for loop to find which tax was most abundant
-tax <- rep(NA, dim(abundances)[1])
+# use a for loop to find which taxa was most abundant
+taxa<- rep(NA, dim(abundances)[1])
 for (taxon in 1:dim(abundances)[1]) {
-  tax[taxon] <- sum(abundances[taxon, ])
+  taxa[taxon] <- sum(abundances[taxon, ])
 }
-rownames(abundances)[which(tax == max(tax))]
+rownames(abundances)[which(taxa== max(taxa))]
 # Ralstonia!
 
 # Use a loop to loop through all of the samples, 
@@ -35,7 +35,8 @@ for (i in 1:dim(covariates)[1]) {
 names(all_information) <- covariates$SampleName
 all_information$LOP_Jan
 
-# Write a function that takes in an OTU table and covariate data
-# and the relative abundance table
-
-# TODO
+# Write a function that takes in an OTU table
+# and returns the relative abundance table
+counts_to_abundances <- function(otu) {
+  apply(otu, 2, function(x) x/sum(x))
+}

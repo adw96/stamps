@@ -12,7 +12,7 @@
 #
 #########################################
 #
-# If you downloaded this from the website, 
+# If you downloaded this from the STAMPS website, 
 # be sure to rename as "STAMPS_Intro2R_OptionA.R", 
 # R and R Studio will not interpret is as an R script with ".txt" suffix
 
@@ -45,31 +45,31 @@ getwd
 # reads in the file, assuming the first line is a header with column names, 
 # that the columns are separated by tabs ("\t") and
 # do not change text values to factors, just leave it as is.
-sampleInfo <- read.table("FWS_covariates.txt", header=TRUE, sep="\t", as.is=TRUE)
+covariates <- read.table("FWS_covariates.txt", header=TRUE, sep="\t", as.is=TRUE)
 # Typing "a <- 5" assigns value 5 to the variable a
 # In the same way, the above command assigns the table read from
-# the filename to the variable sampleInfo
+# the filename to the variable covariates
 
 # Everytime you import data, look at it before you use it.
 # does it look like it came in correctly?
-sampleInfo  
+covariates  
 
 # Different object classes have different properties, 
 # the class() function returns the name of the object's class
-class(sampleInfo)  # what type of object is it?
-colnames(sampleInfo)  # what are the names of the columns / fields?
+class(covariates)  # what type of object is it?
+colnames(covariates)  # what are the names of the columns / fields?
 
 #
-#  We are going to use the data frame sampleInfo for a bit while we practice selection
+#  We are going to use the data frame covariates for a bit while we practice selection
 # Let's look at the variable Month
 Month
 
 # That doesn't work! That's because Month only exists in the context of
-# sampleInfo. Here is how we access Month
-sampleInfo$Month
+# covariates. Here is how we access Month
+covariates$Month
 
-# If we want to make Month available outside of sampleInfo, we need the following command
-attach(sampleInfo)   
+# If we want to make Month available outside of covariates, we need the following command
+attach(covariates)   
 
 # Beware! You can only use attach on one dataframe at a time.
 # You should know of the existence of attach(), but I (Amy) recommend avoid using it
@@ -94,11 +94,11 @@ SampleName[-5]      # all but the fifth value
 # Dual index selection works the same for dataframes and matrices as with vectors, 
 # but you need two indices: rows and columns
 # a blank selection of rows or columns selects all.
-sampleInfo[1:3, c(1,3,5)]    
-sampleInfo[ , c("Month", "Season")]  # you can select columns by selecting their names
-sampleInfo[ Location == "MBL", ]   # you can match data within a column
-sampleInfo[ Type != "Reservoir",]  # ==, !=, >, >=, <, <= 
-sampleInfo[ Month %in% c("Jan", "Feb"),]  # %in% specifies a vector of possibilities
+covariates[1:3, c(1,3,5)]    
+covariates[ , c("Month", "Season")]  # you can select columns by selecting their names
+covariates[ Location == "MBL", ]   # you can match data within a column
+covariates[ Type != "Reservoir",]  # ==, !=, >, >=, <, <= 
+covariates[ Month %in% c("Jan", "Feb"),]  # %in% specifies a vector of possibilities
 
 # Get the set of unique items from a vector
 unique(Season)  # what seasons are represented in the covariate data
@@ -114,29 +114,29 @@ table(Season)
 ###############################################
 # !!  Remember, if you are running locally and the data are in your 
 # !!  working directory, run this without the directory
-#taxaAbund <- read.table("/class/stamps-shared/R_tutorial/taxaAbund.txt", header=TRUE, row.names = 1, sep="\t", as.is=TRUE)
-taxaAbund <- read.table("FWS_OTUs.txt", header=TRUE, row.names = 1, sep="\t", as.is=TRUE)
+#abundances <- read.table("/class/stamps-shared/R_tutorial/FWS_OTUs.txt", header=TRUE, row.names = 1, sep="\t", as.is=TRUE)
+abundances <- read.table("FWS_OTUs.txt", header=TRUE, row.names = 1, sep="\t", as.is=TRUE)
 
 # !! Always LOOK at your imported data before you use it.
-rownames(taxaAbund)  # check the names of the rows
-colnames(taxaAbund)  # check the names of the columns
-head(taxaAbund)   # quick check -- does it look okay?
+rownames(abundances)  # check the names of the rows
+colnames(abundances)  # check the names of the columns
+head(abundances)   # quick check -- does it look okay?
 # That was hard to look at.  If not all columns can be displayed, 
 # it will repeat the rownames (taxa) for each set of columns.
 
 # Look at the sample names in the covariate data file (remember "attach")
 SampleName  #  Notice that the sample names in the covariates file are in the same order as the column names!
-SampleName == colnames(taxaAbund) # they are the same!
+SampleName == colnames(abundances) # they are the same!
 
 # Lets look at the abundances from the first sample ("JPA_Jan")
-head(sort(taxaAbund[,1])) # what kind of abundances do we see?
+head(sort(abundances[,1])) # what kind of abundances do we see?
 
 # All zeros?
 # what if I want to sort decreasing and see the abundant taxa? 
 # Get help on the syntax also help(sort)
 ?sort                       
-sort(taxaAbund[,1], decreasing=TRUE)  # Rank abundance for the data, but it includes 0's
-sort(taxaAbund[taxaAbund[,1]>0,1], decreasing=TRUE)  # Proper rank abundance without 0's
+sort(abundances[,1], decreasing=TRUE)  # Rank abundance for the data, but it includes 0's
+sort(abundances[abundances[,1]>0,1], decreasing=TRUE)  # Proper rank abundance without 0's
 # Spend a moment deciphering how this command was put together. 
 # Do you understand all of the pieces?
 
@@ -147,22 +147,22 @@ sort(taxaAbund[taxaAbund[,1]>0,1], decreasing=TRUE)  # Proper rank abundance wit
 # Answer: 3150
 
 # Save the rank abundance for the first sample
-myRankAbund <- sort(taxaAbund[taxaAbund[,1]>0,1], decreasing=TRUE)  
+myRankAbund <- sort(abundances[abundances[,1]>0,1], decreasing=TRUE)  
 # note that nothing was printed out here, because variable assignment
 # is done silently. 
 head(myRankAbund) # always good to check that this worked as intended!
 
 # Species abundances instead of rank abundances are important in many problems.
 # table() provides the frequencies of each value (count)
-table(taxaAbund[taxaAbund[,1] > 0 ,1])  
-mySpeciesAbund <- table(taxaAbund[,1])
+table(abundances[abundances[,1] > 0 ,1])  
+mySpeciesAbund <- table(abundances[,1])
 mySpeciesAbund
 
 #
 # Create a relative abundance matrix from the abundance matrix
 #
 # scale the values in each column by dividing the values by the column total
-taxaRel <- scale(taxaAbund, center=FALSE, scale=colSums(taxaAbund))  
+taxaRel <- scale(abundances, center=FALSE, scale=colSums(abundances))  
 # Check that the columns now all sum to 1 (=100%)
 colSums(taxaRel)  # colSums finds the sum down the rows of the matrix
 
@@ -231,6 +231,7 @@ topGenera  # Just checking...
 ####################################
 # simple bar chart of the first taxon most abundant taxon
 barplot(topTen[1, ], main=topGenera[1], xlab="Sample", ylab="Relative Abundance")
+# STAY CALM!
 # Data frames can include characters as well as numbers, 
 # so many functions require matrix input to be sure.  
 # What is topTen again?
@@ -290,7 +291,7 @@ dev.off()  # Close the pdf file, return to using the plot window.
 # Lets look at that heat map again, any interesting patterns?
 heatmap(topTen, main="Common Taxa", labRow=topGenera, labCol=Seasons)
 # Oops! 'Seasons' not found?  Why is that?
-colnames(sampleInfo)
+colnames(covariates)
 # Oh, we misspelled it.
 heatmap(topTen, main="Common Taxa", labRow=topGenera, labCol=Season)
 
@@ -341,7 +342,19 @@ summary(ral_model)$coef
 #
 ####################################
 
-# TODO
+# this saves all of the objects (functions and variables)
+# that you created
+save.image("optionA-objects.Rdata")
+
+
+# next time, when you want to load these objects:
+load("optionA-objects.Rdata")
+
+# you can see how this works by first removing an object
+rm(abundances) # remove this matrix
+abundances # it no longer exists
+load("optionA-objects.Rdata") # reload the saved data
+abundances # look! it exist again
 
 ####################################
 #
