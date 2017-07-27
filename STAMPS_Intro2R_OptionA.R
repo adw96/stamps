@@ -1,6 +1,7 @@
 ##########################################
 #
 #  Introduction to R 
+#  Option A: for relatively new users
 #  A tutorial for STAMPS 2017
 # 
 #########################################
@@ -12,7 +13,7 @@
 #########################################
 #
 # If you downloaded this from the website, 
-# be sure to rename as "STAMPS2017_R_tutorial_optionA.R", 
+# be sure to rename as "STAMPS_Intro2R_OptionA.R", 
 # R and R Studio will not interpret is as an R script with ".txt" suffix
 
 ###############################################
@@ -332,6 +333,15 @@ ral_model
 
 # To get more details about the standard errors of these estimates:
 summary(ral_model)$coef
+
+
+####################################
+#
+#  Save your work!
+#
+####################################
+
+# TODO
 
 ####################################
 #
