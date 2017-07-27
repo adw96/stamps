@@ -12,9 +12,11 @@ Ensure that you have R and RStudio installed on your computer, and that you know
 
 See [here](https://stamps.mbl.edu/index.php/Installing_R) for instructions on how to do this
 
+Time permitting, we will have a brief lecture introducing R. Otherwise, we will do this between the statistics talk and the lab tomorrow.
+
 ### Tuesday morning
 
-We will have a lecture on statistical principles for microbiome, before transitioning into the R lab. You have for options for choosing a tutorial
+We will have a lecture on statistical principles for microbiome, before transitioning into the R lab. You have 4 options for choosing a tutorial
   * [Option A](https://github.com/adw96/stamps/blob/master/STAMPS_Intro2R_OptionA.R): Welcome to R! A good introduction/overview for those relatively new to R
   * [Option B](https://github.com/adw96/stamps/blob/master/STAMPS_Intro2R_OptionB.R): R Trainee! Introducing some more complex topics and to give you more exposure. We hope that newcomers to R will have worked through Options A and B by the end of Tuesday night.
   * [Option C](https://github.com/adw96/stamps/blob/master/STAMPS_Intro2R_OptionC.R): R Ninja! To introduce some more advanced concepts
@@ -23,7 +25,7 @@ We will have a lecture on statistical principles for microbiome, before transiti
 
 ### Tuesday night
 
-Continue working through up to the end of Option B. Do not worry about finishing Option C unless you have nothing else to do! 
+Continue working through up to the end of Option B. Once you've done this, go back and finish the USEARCH lab (if you haven't already). Do not worry about finishing Option C unless you have nothing else to do! 
 
 ## For TAs
 
