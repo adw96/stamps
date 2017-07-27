@@ -17,7 +17,7 @@ See [here](https://stamps.mbl.edu/index.php/Installing_R) for instructions on ho
 We will have a lecture on statistical principles for microbiome, before transitioning into the R lab. You have for options for choosing a tutorial
   * [Option A](https://github.com/adw96/stamps/blob/master/STAMPS_Intro2R_OptionA.R): Welcome to R! A good introduction/overview for those relatively new to R
   * [Option B](https://github.com/adw96/stamps/blob/master/STAMPS_Intro2R_OptionB.R): R Trainee! Introducing some more complex topics and to give you more exposure. We hope that newcomers to R will have worked through Options A and B by the end of Tuesday night.
-  * Option C: R Ninja! To introduce some more advanced concepts
+  * [Option C](https://github.com/adw96/stamps/blob/master/STAMPS_Intro2R_OptionC.R): R Ninja! To introduce some more advanced concepts
   * Option D: R Guru! Help the your classmates and the TAs as they do their rounds!
 
 
