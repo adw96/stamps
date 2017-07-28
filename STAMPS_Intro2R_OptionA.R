@@ -8,8 +8,8 @@
 #
 #  This tutorial is written by Amy Willis, July 2017
 #  It is based off an original tutorial by Sue Huse, 2011-16
-#  Contributions also made by [please feel free to contribute!]
-#
+#  Mike Lee (AstrobioMike) contributed some fantastic explanations!
+# 
 #########################################
 #
 # If you downloaded this from the STAMPS website, 
