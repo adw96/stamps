@@ -354,7 +354,7 @@ load("optionA-objects.Rdata")
 rm(abundances) # remove this matrix
 abundances # it no longer exists
 load("optionA-objects.Rdata") # reload the saved data
-abundances # look! it exist again
+abundances # look! it exists again
 
 ####################################
 #
