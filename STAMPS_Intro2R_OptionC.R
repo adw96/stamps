@@ -1,4 +1,4 @@
-###########################################
+##########################################
 #
 #  Introduction to R
 #  Option C: For users with a lot of experience with R
@@ -31,7 +31,7 @@ abundances <- read.table("FWS_OTUs.txt", header=TRUE, row.names = 1, sep="\t", a
 ###############################################
 library(ggplot2)
 library(reshape2) # melt and cast
-library(dplyr) # filter, group_by, and mutate
+library(dplyr) # filter, group_by, and mutate, left_join, %>%
 
 # let's try to plot the abundance of the dominant 2
 # taxa against each other, and colour the points
