@@ -6,8 +6,9 @@
 #
 #########################################
 #
-#  This tutorial is written by Amy Willis, July 2017
-#  Contributions also made by [please feel free to contribute!]
+#  This tutorial was written in July 2017
+#  A collaborative effort by 
+#  Kris Sankaran, Amy Willis, [please feel free to contribute!]
 #
 #########################################
 #
@@ -27,6 +28,7 @@ abundances <- read.table("FWS_OTUs.txt", header=TRUE, row.names = 1, sep="\t", a
 ###############################################
 #
 # more ggplot, reshape, cast, melt
+# By Kris Sankaran
 #
 ###############################################
 library(ggplot2)
@@ -91,20 +93,6 @@ ggplot(top_abundances) +
 
 # write a script to separate out the different taxonomy data in shell
 # and run it through R
-
-# TODO
-
-###############################################
-#
-# plyr
-#
-###############################################
-
-###############################################
-#
-# ddply
-#
-###############################################
 
 # TODO
 
