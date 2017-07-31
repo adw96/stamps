@@ -8,7 +8,9 @@
 #
 #  This tutorial was written in July 2017
 #  A collaborative effort by 
-#  Kris Sankaran, Amy Willis, [please feel free to contribute!]
+#  Lan Huong Nguyen, Kris Sankaran, and Amy Willis
+# 
+#  [please feel free to contribute!]
 #
 #########################################
 #
@@ -91,10 +93,18 @@ ggplot(top_abundances) +
 #
 ###############################################
 
-# write a script to separate out the different taxonomy data in shell
+# Exercise: Write a script to separate out the different 
+# taxonomy data in shell
 # and run it through R
 
-# TODO
+# Hint: Use source() to run an R script in this session
+# Also works for URLs!
+?source
+
+# Hint: Use system() to run a system command. 
+# In the alpha diversity lab we will see an example
+# of this (running CatchAll via the command line)
+?system
 
 ###############################################
 #
