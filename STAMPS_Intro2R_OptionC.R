@@ -8,7 +8,8 @@
 #
 #  This tutorial was written in July 2017
 #  A collaborative effort by 
-#  Lan Huong Nguyen, Kris Sankaran, and Amy Willis
+#  Julia Fukuyama, Lan Huong Nguyen, 
+#  Kris Sankaran, and Amy Willis
 # 
 #  [please feel free to contribute!]
 #
