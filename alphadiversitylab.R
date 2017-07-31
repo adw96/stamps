@@ -120,7 +120,8 @@ breakaway_nof1(frequency_count_list[[60]][-1,])
 #objective_bayes_geometric(frequency_count_list[[60]])$results
 #objective_bayes_mixedgeo(frequency_count_list[[60]])$results
 
-install.packages("MASS"); require(MASS) ## you need MASS for this to work
+#install.packages("MASS"); require(MASS) ## you need MASS for this to work
+# if R had to restart, go `require(breakaway)` again
 bayesian_results <- objective_bayes_negbin(frequency_count_list[[1]], answers = T)
 ## (Don't worry about those warnings. We're working on them -- sorry!)
 
@@ -183,6 +184,31 @@ sd(replicate(500, resample_estimate(otu_table[,1], shannon, my_sample_size = ns)
 
 ## An ongoing mission of the breakaway package is to develop better estimates for
 ## diversity indices than the current "plug-in" estimates
+# The function alpha_better() is currently under development --
+# it's a way to upscale alpha diversity for unobserved species
+# Have a play with it!
+
+alpha_better(frequency_count_list[[1]], 0) # Species richness
+alpha_better(frequency_count_list[[1]], 2) # Inverse Simpson
+# compare to
+hill(frequency_count_list[[1]], 0)
+hill(frequency_count_list[[1]], 2)
+
+## Let's see it over a range
+x <- seq(from = 0.001, to = 5, length.out = 100)
+plot(x, hill(frequency_count_list[[1]], x), type = "l")
+points(x, alpha_better(frequency_count_list[[1]], x), col="red", type="l")
+## These are Hill numbers -- a function over alpha diversity:
+## Species richness is on the LHS (low q values), evenness on the RHS
+## You can see how plug-in alpha div (black) is low, because it 
+## doesn't account for unobserved species. The red (upscaled) 
+## estimates correct for this -- thus why they're higher!
+
+# Come talk to me if you want to know more -- details and docs 
+# coming soon... But you should still pester me :) Basically,
+# the estimates are good but I'm still figuring out the standard
+# errors
+
 
 # Please consider following the breakaway package development on github
 # to get updates about our progress!
