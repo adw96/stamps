@@ -1,0 +1,22 @@
+---
+title: "Rmarkdown example"
+output: html_document
+---
+
+Here is some of the code from the option A tutorial formatted for Rmarkdown. In the first code chunk, we read in the data.
+
+```{r read-data}
+covariates <- read.table("FWS_covariates.txt", header=TRUE, sep="\t", as.is=TRUE)
+abundances <- read.table("FWS_OTUs.txt", header=TRUE, row.names = 1, sep="\t", as.is=TRUE)
+```
+
+Then we can make an abundance vector and inspect it. 
+```{r abundances}
+myRankAbund <- sort(abundances[abundances[,1]>0,1], decreasing=TRUE)
+head(myRankAbund)
+```
+
+Finally, we can include plots:
+```{r plotting}
+plot(myRankAbund, main="Rank Abundance", xlab="Rank", ylab="Taxon Abundance")
+```
